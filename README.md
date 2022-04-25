@@ -1,4 +1,4 @@
-These are my solutions for the [8 Week SQL Challenge] by Danny Ma (https://8weeksqlchallenge.com/)
+These are my solutions for the [8 Week SQL Challenge](https://8weeksqlchallenge.com/) by Danny Ma
 
 Solutions were prepared in Snowflake using a [trial account](https://signup.snowflake.com/)
 
