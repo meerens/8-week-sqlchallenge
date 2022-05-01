@@ -172,6 +172,31 @@ GROUP BY 1;
 -- they earn 2x points on all items, not just sushi - 
 -- how many points do customer A and B have at the end of January?
 
+WITH  q10_eligible as 
+(
+SELECT 
+*,
+join_date + 6 AS double_date
+FROM sqlchallenge_week1.members
+)
+
+SELECT 
+s.customer_id,
+SUM 
+( CASE 
+  WHEN order_date >= join_date AND order_date <= double_date 
+  THEN m.price * 20 -- double points for all items (price * 10 * 2)
+  WHEN order_date >= join_date AND order_date > double_date
+  THEN IF (m.product_id = 1, m.price * 20, m.price * 10)  -- only double points for sushi
+  END
+) AS points
+FROM sqlchallenge_week1.sales AS s 
+  JOIN sqlchallenge_week1.menu AS m
+    ON s.product_id = m.product_id
+  JOIN q10_eligible AS me -- using an innner join as we're only looking at customers who are a member 
+    ON s.customer_id = me.customer_id
+WHERE s.order_date <= CAST('2021-01-31' AS date) 
+GROUP BY 1;
 
 -- Bonus 1
 -- Join all the things (write code for the table as shown)
