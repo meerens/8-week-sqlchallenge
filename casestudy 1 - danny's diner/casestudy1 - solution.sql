@@ -11,7 +11,7 @@ SELECT
 s.customer_id,
 SUM(m.price) AS total_spent
 FROM sqlchallenge_week1.sales AS s
-  LEFT JOIN sqlchallenge_week1.menu AS m
+  JOIN sqlchallenge_week1.menu AS m
     ON s.product_id = m.product_id
 GROUP BY s.customer_id;
 
@@ -20,15 +20,16 @@ GROUP BY s.customer_id;
 
 SELECT 
 customer_id,
-COUNT(DISTINCT order_date) AS number_of_visits
+COUNT(DISTINCT order_date) AS number_of_visits 
 FROM sqlchallenge_week1.sales 
 GROUP BY customer_id;
+
 
 -- Question 3
 -- Which item was the most popular for each customer?
 
-WITH  q3_rank_dates as 
-(
+WITH  q3_rank_dates as (
+
 SELECT *, 
 DENSE_RANK () OVER(PARTITION BY customer_id ORDER BY order_date ASC) AS ranknr 
 FROM sqlchallenge_week1.sales AS s
@@ -49,19 +50,19 @@ ORDER BY 1;
 
 SELECT 
 m.product_name,
-COUNT(s.product_id) AS times_purchased
+COUNT(*) AS times_purchased
 FROM sqlchallenge_week1.sales AS s
   JOIN sqlchallenge_week1.menu AS m
     ON s.product_id = m.product_id
 GROUP BY product_name
 ORDER BY times_purchased DESC
-LIMIT 1; 
+LIMIT 1;
 
 -- Question 5
 -- Which item was the most popular for each customer?
 
-WITH  q5_items_sold_ranked as 
-(
+WITH  q5_items_sold_ranked as (
+
 SELECT 
 s.customer_id,
 s.product_id,
@@ -76,7 +77,7 @@ GROUP BY 1,2,3
 
 SELECT
 customer_id,
-STRING_AGG(product_name, ', ') AS most_popular_items -- returns the concatenated values as a single string
+STRING_AGG(product_name, ', ') AS most_popular_items 
 FROM q5_items_sold_ranked
 WHERE count_rank = 1
 GROUP BY customer_id
@@ -185,15 +186,15 @@ s.customer_id,
 SUM 
 ( CASE 
   WHEN order_date >= join_date AND order_date <= double_date 
-  THEN m.price * 20 -- double points for all items (price * 10 * 2)
+  THEN m.price * 20 
   WHEN order_date >= join_date AND order_date > double_date
-  THEN IF (m.product_id = 1, m.price * 20, m.price * 10)  -- only double points for sushi
+  THEN IF (m.product_id = 1, m.price * 20, m.price * 10)  
   END
 ) AS points
 FROM sqlchallenge_week1.sales AS s 
   JOIN sqlchallenge_week1.menu AS m
     ON s.product_id = m.product_id
-  JOIN q10_eligible AS me -- using an innner join as we're only looking at customers who are a member 
+  JOIN q10_eligible AS me 
     ON s.customer_id = me.customer_id
 WHERE s.order_date <= CAST('2021-01-31' AS date) 
 GROUP BY 1;
