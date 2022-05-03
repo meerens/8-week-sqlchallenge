@@ -15,10 +15,10 @@ Solutions were coded in [Google Big Query](https://cloud.google.com/bigquery/doc
 ## Content Summary
 For more context, code comments and lessons learnt ... check the links in the table below.
 
-| **Challenge Details**                                            | **SQL Notebook** | **Blog Post(s)** | **Status**       |
+| **Challenge Details**                                            | **Notebook** | **Markdown** | **Blog Post(s)**       |
 | ---------------------------------------------------------------- | ---------------- | ---------------- | ---------------- |
-| [Danny’s Diner](https://8weeksqlchallenge.com/case-study-1/) 🍜  |                  |                  | Completed        |
-| [Pizza Runner](https://8weeksqlchallenge.com/case-study-2/) 🍕   |                  |                  | Work In Progress |
+| [Danny’s Diner](https://8weeksqlchallenge.com/case-study-1/) 🍜  |                  |                  |       |
+| [Pizza Runner](https://8weeksqlchallenge.com/case-study-2/) 🍕   |                  |                  | |
 | [Foodie-Fi ](https://8weeksqlchallenge.com/case-study-3/)🥑      |                  |                  |                  |
 | [Data Bank](https://8weeksqlchallenge.com/case-study-4/) 🏦      |                  |                  |                  |
 | [Data Mart](https://8weeksqlchallenge.com/case-study-5/) 🧺      |                  |                  |                  |
