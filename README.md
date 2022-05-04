@@ -1,28 +1,39 @@
-![](https://github.com/meerens/8-week-sqlchallenge/blob/main/meme.jpeg)
+Greetings 👋🏼 - my name is Marian 👩🏼‍💻 and I recently embarked on a journey to level up my SQL game by starting the [8 Week SQL Challenge](https://8weeksqlchallenge.com/) by Danny Ma. 
+<br><br>
+This repository contains all my documentation for the challenges that I have completed so far. Keep watching 👀 this space as I add on more solutions.
 
-## Introduction
-
-These are my solutions for the [8 Week SQL Challenge](https://8weeksqlchallenge.com/) by Danny Ma
+### `My Process`
+Solutions were coded in [Google Big Query](https://cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax).<br>
 
 Each case-study folder contains the following files
+- **data.sql**: compiled sql for creating tables & loading data 
+- **datacleaning.sql**: compiled sql for cleaning data
+- **solution.sql**: compiled sql for answering the challenge questions
 
-- data.sql: code for creating tables & loading data 
-- datacleaning.sql: code for cleaning data
-- solution.sql: code for answering the challenge questions
+My code was written in a [Count](https://count.co/) SQL notebook. 
 
-Solutions were coded in [Google Big Query](https://cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax) 
+From there I copied the compiled SQL to a *.sql file which you can view in the individual challenge folders. 
 
-## Content Summary
-For more context, code comments and lessons learnt ... check the links in the table below.
+I also copied the markdown from the notebook to a [Craft](https://www.craft.do/) doc to which I added some additional formatting together with the screenshots and/or csv downloads so you can see tabular output from the individual notebook cells.
 
-| **Challenge Details**                                            | **Notebook** | **Markdown** | **Blog Post(s)**       |
-| ---------------------------------------------------------------- | ---------------- | ---------------- | ---------------- |
-| [Danny’s Diner](https://8weeksqlchallenge.com/case-study-1/) 🍜  |                  |                  |       |
-| [Pizza Runner](https://8weeksqlchallenge.com/case-study-2/) 🍕   |                  |                  | |
-| [Foodie-Fi ](https://8weeksqlchallenge.com/case-study-3/)🥑      |                  |                  |                  |
-| [Data Bank](https://8weeksqlchallenge.com/case-study-4/) 🏦      |                  |                  |                  |
-| [Data Mart](https://8weeksqlchallenge.com/case-study-5/) 🧺      |                  |                  |                  |
-| [CliqueBait](https://8weeksqlchallenge.com/case-study-6/) 🪝     |                  |                  |                  |
-| [Balanced Trees](https://8weeksqlchallenge.com/case-study-7/) 🏔 |                  |                  |                  |
-| [Fresh Segments](https://8weeksqlchallenge.com/case-study-8/) 🍊 |                  |                  |                  |
+### `The Challenges` 
+Check the links below for all the documentationion for each individual challenge.
 
+#### Danny’s Diner 🍜 
+🔗 [The Challenge ](https://8weeksqlchallenge.com/case-study-1/) <br>
+🔗 [SQL Notebook](https://count.co/notebook/DHRjqUjl6mZ) <br>
+🔗 [Markdown / Solution Comments](https://www.craft.do/s/ygHmfzTUw8kd9z) <br>
+
+#### Pizza Runner 🍕
+🔗 [The Challenge ](https://8weeksqlchallenge.com/case-study-2/)  <br>
+🔗 SQL Notebook  <br>
+🔗 Markdown / Solution Comments  <br>
+
+#### Foodie-Fi 🥑 
+#### Data Bank 🏦  
+#### Data Mart 🧺  
+#### CliqueBait 🪝
+#### Balanced Trees 🏔
+#### Fresh Segments 🍊
+
+![](https://github.com/meerens/8-week-sqlchallenge/blob/main/meme.jpeg)
