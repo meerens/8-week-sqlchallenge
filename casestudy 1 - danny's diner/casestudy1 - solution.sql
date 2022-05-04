@@ -3,6 +3,7 @@
 -- https://8weeksqlchallenge.com/case-study-1/ 
 
 -- Coded by Marian Eerens in Google BigQuery
+-- https://github.com/meerens/8-week-sqlchallenge
 
 -- Question 1
 -- How many days has each customer visited the restaurant?

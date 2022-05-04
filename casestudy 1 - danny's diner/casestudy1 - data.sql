@@ -3,8 +3,9 @@
 -- https://8weeksqlchallenge.com/case-study-2/ 
 
 -- Coded by Marian Eerens in Google BigQuery
+-- https://github.com/meerens/8-week-sqlchallenge
 
--- Create sales
+-- Create sales table
 
 CREATE TABLE sqlchallenge_week1.sales (
   customer_id STRING(1),
@@ -31,7 +32,7 @@ VALUES
   ('C', '2021-01-01', 3),
   ('C', '2021-01-07', 3);
  
--- Create menu
+-- Create menu table
 
 CREATE TABLE sqlchallenge_week1.menu (
   product_id INTEGER,
@@ -46,7 +47,7 @@ VALUES
   (2, 'curry', 15),
   (3, 'ramen', 12);
   
--- Create members
+-- Create members table
 
 CREATE TABLE sqlchallenge_week1.members (
   customer_id STRING(1),
