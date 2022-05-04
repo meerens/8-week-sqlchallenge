@@ -28,10 +28,10 @@ GROUP BY customer_id;
 -- Question 3
 -- Which item was the most popular for each customer?
 
-WITH  q3_rank_dates as (
-
+WITH  q3_rank_dates_cte as (
 SELECT *, 
-DENSE_RANK () OVER(PARTITION BY customer_id ORDER BY order_date ASC) AS ranknr 
+DENSE_RANK () OVER
+  (PARTITION BY customer_id ORDER BY order_date ASC) AS ranknr 
 FROM sqlchallenge_week1.sales AS s
   JOIN sqlchallenge_week1.menu AS m
     ON s.product_id = m.product_id
@@ -40,7 +40,7 @@ FROM sqlchallenge_week1.sales AS s
 SELECT 
 customer_id,
 product_name
-FROM q3_rank_dates 
+FROM q3_rank_dates_cte
 WHERE ranknr = 1
 GROUP BY customer_id, product_name
 ORDER BY 1;
@@ -61,7 +61,7 @@ LIMIT 1;
 -- Question 5
 -- Which item was the most popular for each customer?
 
-WITH  q5_items_sold_ranked as (
+WITH  q5_items_sold_ranked_cte as (
 
 SELECT 
 s.customer_id,
@@ -78,7 +78,7 @@ GROUP BY 1,2,3
 SELECT
 customer_id,
 STRING_AGG(product_name, ', ') AS most_popular_items 
-FROM q5_items_sold_ranked
+FROM q5_items_sold_ranked_cte
 WHERE count_rank = 1
 GROUP BY customer_id
 ORDER BY customer_id ASC;
@@ -86,7 +86,7 @@ ORDER BY customer_id ASC;
 -- Question 6
 -- Which item was purchased first by the customer after they became a member?
 
-WITH  q6_items_after_membership as
+WITH  q6_items_after_membership_cte as
 (
 SELECT 
 s.customer_id,
@@ -104,7 +104,7 @@ SELECT
 s.customer_id, 
 me.product_name,
 s.order_date
-FROM q6_items_after_membership AS s
+FROM q6_items_after_membership_cte AS s
 JOIN sqlchallenge_week1.menu AS me
   ON s.product_id = me.product_id
 WHERE rank = 1;
@@ -112,28 +112,33 @@ WHERE rank = 1;
 -- Question 7
 -- Which item was purchased just before the customer became a member?
 
-WITH  q6_items_after_membership as 
-(
+WITH  q7_items_before_membership_cte as (
+
 SELECT 
 s.customer_id,
 m.join_date, 
 s.order_date, 
 s.product_id,
-DENSE_RANK() OVER(PARTITION BY s.customer_id ORDER BY s.order_date ASC) AS rank
+DENSE_RANK() OVER
+  (PARTITION BY s.customer_id ORDER BY s.order_date DESC) AS rank
+-- rank puts order closest to join date first
 FROM sqlchallenge_week1.sales AS s
   JOIN sqlchallenge_week1.members AS m
     ON s.customer_id = m.customer_id
-WHERE s.order_date >= m.join_date
+-- only orders before membership
+WHERE s.order_date < m.join_date
 )
 
 SELECT 
 s.customer_id, 
 me.product_name,
 s.order_date
-FROM q6_items_after_membership AS s
+FROM q7_items_before_membership_cte AS s
 JOIN sqlchallenge_week1.menu AS me
    ON s.product_id = me.product_id
-WHERE rank = 1;
+-- only keeping rank 1
+WHERE rank = 1
+ORDER BY 1;
 
 -- Question 8
 -- What is the total items and amount spent for each member before they became a member?
@@ -173,7 +178,7 @@ GROUP BY 1;
 -- they earn 2x points on all items, not just sushi - 
 -- how many points do customer A and B have at the end of January?
 
-WITH  q10_eligible as 
+WITH  q10_eligible_cte as 
 (
 SELECT 
 *,
@@ -194,7 +199,7 @@ SUM
 FROM sqlchallenge_week1.sales AS s 
   JOIN sqlchallenge_week1.menu AS m
     ON s.product_id = m.product_id
-  JOIN q10_eligible AS me 
+  JOIN q10_eligible_cte AS me 
     ON s.customer_id = me.customer_id
 WHERE s.order_date <= CAST('2021-01-31' AS date) 
 GROUP BY 1;
@@ -214,17 +219,16 @@ CASE
 FROM sqlchallenge_week1.sales AS s 
   JOIN sqlchallenge_week1.menu AS m
     ON s.product_id = m.product_id
-  LEFT JOIN members AS me 
+  LEFT JOIN sqlchallenge_week1.members AS me 
     ON s.customer_id = me.customer_id
 ORDER BY 1,2;
-
 
 -- Bonus 2
 -- Rank all the things (write code for the table as shown)
 
-WITH  bonus1 as
-(
-  SELECT
+WITH  bonus1 as (
+
+SELECT
 s.customer_id,
 s.order_date,
 m.product_name,
@@ -236,12 +240,12 @@ CASE
 FROM sqlchallenge_week1.sales AS s 
   JOIN sqlchallenge_week1.menu AS m
     ON s.product_id = m.product_id
-  LEFT JOIN members AS me 
+  LEFT JOIN sqlchallenge_week1.members AS me 
     ON s.customer_id = me.customer_id
 ORDER BY 1,2
 )
 
-SELECT *, 
+SELECT *,
 CASE
   WHEN member = 'N' THEN NULL
   ELSE RANK() OVER (PARTITION BY customer_id, member ORDER BY order_date)
