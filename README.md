@@ -3,7 +3,7 @@ Greetings 👋🏼 - my name is Marian 👩🏼‍💻 and I recently embarked o
 This repository contains all my documentation for the challenges that I have completed so far. Keep watching 👀 this space as I add on more solutions.
 
 ### `My Process`
-Solutions were coded in [Google Big Query](https://cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax).<br>
+Solutions were coded in [Google Big Query](https://cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax) syntax.<br>
 
 Each case-study folder contains the following files
 - **data.sql**: compiled sql for creating tables & loading data 
