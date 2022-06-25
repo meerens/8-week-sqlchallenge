@@ -3,7 +3,7 @@ Greetings 👋🏼 - my name is Marian 👩🏼‍💻 and I recently embarked o
 This repository contains all my documentation for the challenges that I have completed so far. Keep watching 👀 this space as I add on more solutions.
 
 ### `My Process`
-Solutions were coded in [Google Big Query](https://cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax) syntax.<br>
+Solutions were coded in [Google BigQuery](https://cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax) syntax.<br>
 
 Each case-study folder contains the following files
 - **data.sql**: compiled sql for creating tables & loading data 
@@ -19,21 +19,17 @@ I also copied the markdown from the notebook to a [Craft](https://www.craft.do/)
 ### `The Challenges` 
 Check the links below for all the documentationion for each individual challenge.
 
+
 #### Danny’s Diner 🍜 
 🔗 [The Challenge ](https://8weeksqlchallenge.com/case-study-1/) <br>
 🔗 [SQL Notebook](https://count.co/notebook/DHRjqUjl6mZ) <br>
 🔗 [Markdown / Solution Comments](https://www.craft.do/s/ygHmfzTUw8kd9z) <br>
 
+
 #### Pizza Runner 🍕
 🔗 [The Challenge ](https://8weeksqlchallenge.com/case-study-2/)  <br>
-🔗 SQL Notebook  <br>
-🔗 Markdown / Solution Comments  <br>
+🔗 [SQL Notebook](https://count.co/notebook/SIsIb5DCIpA)<br>
+🔗 [Markdown / Solution Comments](https://www.craft.do/s/1z4crhxB3nAkEk) <br>
 
-#### Foodie-Fi 🥑 
-#### Data Bank 🏦  
-#### Data Mart 🧺  
-#### CliqueBait 🪝
-#### Balanced Trees 🏔
-#### Fresh Segments 🍊
 
 ![](https://github.com/meerens/8-week-sqlchallenge/blob/main/meme.jpeg)
