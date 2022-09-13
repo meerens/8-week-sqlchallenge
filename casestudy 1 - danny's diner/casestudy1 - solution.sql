@@ -190,11 +190,15 @@ FROM sqlchallenge_week1.members
 SELECT 
 s.customer_id,
 SUM 
-( CASE 
-  WHEN order_date >= join_date AND order_date <= double_date 
-  THEN m.price * 20 
-  WHEN order_date >= join_date AND order_date > double_date
-  THEN IF (m.product_id = 1, m.price * 20, m.price * 10)  
+( 
+-- points calculated at the row level
+-- then aggregated and grouped by customer
+  CASE WHEN m.product_id = 1 THEN m.price * 2 * 10
+  --^^ sushi always gets double points
+  WHEN order_date >= join_date AND order_date <= double_date THEN m.price * 2 * 10
+  --^^ all items when ordered first week after joining get double points 
+  ELSE m.price * 10
+  -- ^^if all the other conditions are not true, then it's just 10 points for each dollar spent
   END
 ) AS points
 FROM sqlchallenge_week1.sales AS s 
@@ -202,7 +206,8 @@ FROM sqlchallenge_week1.sales AS s
     ON s.product_id = m.product_id
   JOIN q10_eligible_cte AS me 
     ON s.customer_id = me.customer_id
-WHERE s.order_date <= CAST('2021-01-31' AS date) 
+-- only orders until the end of january
+WHERE s.order_date <= CAST('2021-01-31' AS date)
 GROUP BY 1;
 
 -- Bonus 1
